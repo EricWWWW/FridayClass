@@ -1,0 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #404143;
+}
+a {
+  text-decoration: none;
+}
+a :hover {
+  color: white;
+}
+header > .content,
+.container,
+footer {
+  margin: 0 auto;
+}
+@keyframes toUp {
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+    width: 200px;
+  }
+  to {
+    opacity: 1;
+    width: 600px;
+  }
+}
+@keyframes pFadeIn {
+  from {
+    opacity: 0;
+    bottom: 0;
+  }
+  25% {
+    opacity: 1;
+    bottom: 10%;
+  }
+  75% {
+    opacity: 0;
+    bottom: 10%;
+  }
+  to {
+    opacity: 0;
+    bottom: 10%;
+  }
+}
+@keyframes goBack {
+  from {
+    width: 600px;
+    left: 0;
+  }
+  to {
+    top: 0;
+    width: 121px;
+    left: -902px;
+    margin-top: 30px;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.animation {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.animation img {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  margin-top: 10%;
+  animation: fadeIn 2s,goBack 2s 2s linear forwards;
+}
+.animation p {
+  position: absolute;
+  right: 0;
+  left: 0;
+  font-size: 30px;
+  animation: pFadeIn 3s 0.7s linear forwards;
+}
+header {
+  background: rgba(0, 0, 0, 0);
+  height: 600px;
+  margin-top: 100%;
+  position: relative;
+  animation: toUp 2s 2s forwards;
+}
+header .content {
+  width: 1200px;
+  height: 200px;
+}
+header .content .toolbar {
+  margin-top: 10px;
+  float: right;
+}
+header .content .toolbar p {
+  display: inline-block;
+  font-size: 13px;
+}
+header .content .toolbar p :after {
+  content: '  |  ';
+  color: white;
+}
+header .content .toolbar p:last-child :after {
+  content: '';
+}
+header .content .toolbar p a:hover {
+  color: white;
+}
+header .content .nav > div {
+  margin: auto 30px;
+  margin-top: 30px;
+  display: inline-block;
+}
+header .content .nav > div div {
+  width: 121px;
+  height: 60px;
+}
+header .content .nav ul {
+  width: auto;
+}
+header .content .nav li {
+  text-align: right;
+  float: left;
+  position: relative;
+  color: #404143;
+  width: 110px;
+  list-style: none;
+}
+header .content .nav li a:hover {
+  color: white;
+}
+header .content .nav li div {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 150px;
+}
+header .content .nav li div:before {
+  content: '▲';
+  color: white;
+  position: absolute;
+  left: 17px;
+  top: -17px;
+}
+header .content .nav li div p {
+  background: white;
+  font-size: 13px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+header .content .nav li div p:hover {
+  background: #1092c2;
+  color: white;
+  cursor: pointer;
+}
+header .swiper {
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+header .swiper .swiper-pagination {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+header .swiper .swiper-pagination span {
+  margin: 10px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: gray;
+}
+header .swiper .swiper-pagination span.active {
+  opacity: 1;
+  background: #007aff;
+}
+header .swiper ul {
+  height: 600px;
+  position: absolute;
+}
+header .swiper li {
+  height: 600px;
+  list-style: none;
+  float: left;
+  background-size: cover;
+  background-position: 50% 20%;
+}
+header .left,
+header .right {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 250px;
+  background-size: cover;
+  cursor: pointer;
+}
+header .left {
+  left: 30px;
+  background-image: url(../img/left.png);
+}
+header .right {
+  right: 30px;
+  background-image: url(../img/right.png);
+}
+.container {
+  margin-top: 40px;
+  width: 1200px;
+  height: 270px;
+}
+.container .block {
+  float: left;
+  border: 2px solid #d6d6d6;
+  border-top: 5px solid #1092c2;
+  margin: auto 8px;
+  height: 240px;
+}
+.container .block .title {
+  background: linear-gradient(to bottom, white, #f9f9f9);
+  height: 35px;
+  line-height: 36px;
+  font-weight: 600;
+}
+.container .block .title p.active {
+  background: #1092c2;
+  color: white;
+  cursor: pointer;
+}
+.container .block .right-side {
+  color: #838383;
+  float: right;
+  font-size: 13px;
+}
+.container .block:nth-child(1) {
+  width: 30%;
+}
+.container .block:nth-child(1) .title p {
+  float: left;
+  width: 33.3%;
+  line-height: 36px;
+  text-align: center;
+  font-weight: 600;
+}
+.container .block:nth-child(1) .title p:hover {
+  background: #1092c2;
+  color: white;
+  cursor: pointer;
+}
+.container .block:nth-child(1) .content {
+  padding: 10px;
+}
+.container .block:nth-child(1) .content li {
+  list-style: none;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  margin: 10px;
+  font-weight: 400;
+}
+.container .block:nth-child(1) .content li:before {
+  content: '  ◤ ';
+  color: #1092c2;
+}
+.container .block:nth-child(2) {
+  width: 40%;
+}
+.container .block:nth-child(2) .title {
+  padding: 0 20px;
+}
+.container .block:nth-child(2) .title p {
+  float: left;
+}
+.container .block:nth-child(2) .content {
+  padding: 20px;
+}
+.container .block:nth-child(2) .content > div {
+  float: left;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.container .block:nth-child(2) .content > div img {
+  width: 134px;
+  border: 1px solid #d6d6d6;
+  margin-bottom: 18px;
+}
+.container .block:nth-child(3) {
+  width: 20%;
+}
+.container .block:nth-child(3) .title {
+  padding: 0 20px;
+}
+.container .block:nth-child(3) .title p {
+  float: left;
+}
+.container .block:nth-child(3) .content {
+  padding: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.container .block:nth-child(3) .content div {
+  float: left;
+  margin: 10px;
+}
+.container .block:nth-child(3) .content img {
+  width: 70px;
+}
+footer {
+  margin-top: 30px;
+  border-top: 8px solid #1092c2;
+  height: 40px;
+}
+footer .content {
+  width: 1200px;
+  margin: 0 auto;
+  line-height: 40px;
+  font-size: 13px;
+}
+footer .content .toolbar {
+  float: left;
+}
+footer .content .toolbar p {
+  display: inline-block;
+}
+footer .content .toolbar p a:hover {
+  color: #404143;
+}
+footer .content .toolbar p :after {
+  content: '  |  ';
+  color: #d6d6d6;
+}
+footer .content .toolbar p:last-child :after {
+  content: '';
+}
+footer .content .about {
+  float: right;
+}
