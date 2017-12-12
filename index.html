@@ -230,7 +230,7 @@
         $('header .left').on('click',function(){
             if(!isAnimatie){
                 clearInterval(interval);
-                next(nowIndex)
+                prev(nowIndex)
                 interval = setInterval(function(){
                     next(nowIndex);
                 },5000)
