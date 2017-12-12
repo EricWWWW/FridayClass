@@ -55,8 +55,8 @@
 		</ul>
 		<div class="swiper-pagination"></div>
 	</div>
-	<!--<span class="left"></span>-->
-	<!--<span class="right"></span>-->
+	<span class="left"></span>
+	<span class="right"></span>
 </header>
 <div class="container">
 	<div class="block">
@@ -149,7 +149,7 @@
 	function initSwiper(className){ // 初始化swiper轮播图
 	    var index = $(className+' li').length;
         var nowIndex = 0;
-        var timeout=Date.now(); //防止多次点击
+        var isAnimatie = false; //防止多次点击
 
 		for(var i = 0;i<index;i++){
 		    if(i==0){
@@ -168,20 +168,25 @@
         $(className).children('ul').css('width',100*newIndex+'%');
         $(className+' li').css('width',100/newIndex+'%')
 
+
 		function next(nI){
             $(className+' .swiper-pagination span').eq(nI).removeClass('active');
             $(className+' .swiper-pagination span').eq((nI+1)%index).addClass('active');
+
+            isAnimatie = true;
 
             if(nI == $(className+' li').length-3){
                 $(className).children('ul').animate({left:'-'+(nI+2)*100+'%'},1500,function(){
                     nowIndex = 0;
                     $(className).children('ul').css('left','-100%')
+                    isAnimatie = false;
                 })
 			}
 			else{
 
                 $(className).children('ul').animate({left:'-'+(nI+2)*100+'%'},1500,function(){
                     nowIndex ++;
+                    isAnimatie = false;
                 })
 			}
 
@@ -190,56 +195,45 @@
         function prev(nI){
             $(className+' .swiper-pagination span').eq(nI).removeClass('active');
             $(className+' .swiper-pagination span').eq((nI-1+index)%index).addClass('active');
+            isAnimatie = true;
             if(nI == 0){
-                $(className).children('ul').animate({left:'0%'},1500,function(){
+                $(className).children('ul').animate({left:'0%'},2000,function(){
                     nowIndex = newIndex-3;
                     $(className).children('ul').css('left','-'+(newIndex-2)*100+'%')
+                    isAnimatie = false;
                 })
             }
             else{
 
-                $(className).children('ul').animate({left:-nI*100+'%'},1500,function(){
+                $(className).children('ul').animate({left:-nI*100+'%'},2000,function(){
                     nowIndex --;
+                    isAnimatie = false;
                 })
             }
         }
         var interval = setInterval(function(){
             next(nowIndex);
-        },3000)
+        },5000)
 
 
         $('header .right').on('click',function(){
-            //判断当前的总毫秒数与初始计数器的间隔，
-            //小于300毫秒就触发事件，否则更新计数器
-            if((Date.now()-timeout)>1000){
-                //首先更新计数器，如果放在最后更新，
-                //可能因为其中有Ajax等操作而延迟，使上面的判断失效。
-                timeout=Date.now();
+
+	        if(!isAnimatie){
                 clearInterval(interval);
                 next(nowIndex)
                 interval = setInterval(function(){
                     next(nowIndex);
-                },3000)
-            }else{
-                timeout=Date.now();
-            }
+                },5000)
+	        }
 
         })
         $('header .left').on('click',function(){
-            //判断当前的总毫秒数与初始计数器的间隔，
-            //小于300毫秒就触发事件，否则更新计数器
-            if((Date.now()-timeout)>1000){
-                //首先更新计数器，如果放在最后更新，
-                //可能因为其中有Ajax等操作而延迟，使上面的判断失效。
-                timeout=Date.now();
-               // $(this).css('e')
+            if(!isAnimatie){
                 clearInterval(interval);
-                prev(nowIndex)
+                next(nowIndex)
                 interval = setInterval(function(){
                     next(nowIndex);
-                },3000)
-            }else{
-                timeout=Date.now();
+                },5000)
             }
 
         })
